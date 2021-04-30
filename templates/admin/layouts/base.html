@@ -1,19 +1,62 @@
 <!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ADMIN</title>
-    <!-- BootStrap CDN -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    {% block metablock %} {% endblock %}
+
+    <title>Admin</title>
+
+    <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      href="/static/vendor/fontawesome-free/css/all.min.css"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/css/adminlte.min.css" />
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+      rel="stylesheet"
+    />
+    
+    {% block styleblock %} {% endblock %}
   </head>
-  <body>
-    {% block content %} {% endblock %}
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <!-- Navbar -->
+      {% include '/admin/layouts/navbar.html' %}
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      {% include '/admin/layouts/main-sidebar.html' %}
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        {% include '/admin/layouts/breadcrumb.html' %}
+        {% block content %} {% endblock %}
+      </div>
+      <!-- /.content-wrapper -->
+      <!-- Control Sidebar -->
+      {% include '/admin/layouts/control-sidebar.html' %}
+      <!-- /.control-sidebar -->
+      <!-- Main Footer -->
+      {% include '/admin/layouts/main-footer.html' %}
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/static/js/adminlte.min.js"></script>
+    {% block jsblock %} {% endblock %}
   </body>
 </html>

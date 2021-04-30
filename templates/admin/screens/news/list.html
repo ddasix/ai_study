@@ -1,0 +1,73 @@
+{% extends '/admin/layouts/base.html' %}
+{% block styleblock %}
+<link
+  rel="stylesheet"
+  href="/static/vendor/datatables-bs4/css/dataTables.bootstrap4.css"
+/>
+{% endblock styleblock %}
+
+{% block content %}
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">뉴스목록</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>분류</th>
+                  <th>기사사진</th>
+                  <th>기사제목</th>
+                  <th>등록일자</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>정치</td>
+                  <td><img src="/static/upload/news.jpg" style="width:120px;"></td>
+                  <td>테스트</td>
+                  <td>2020-02-22 13:30</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>번호</th>
+                  <th>분류</th>
+                  <th>기사사진</th>
+                  <th>기사제목</th>
+                  <th>등록일자</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+{% endblock content %}
+
+{% block jsblock %}
+<script src="/static/vendor/datatables/jquery.dataTables.js"></script>
+<script src="/static/vendor/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script>
+  $("#example1").DataTable({
+    paging: true,
+    lengthChange: true,
+    searching: true,
+    ordering: true,
+    info: true,
+    autoWidth: true,
+  });
+</script>
+{% endblock jsblock %}

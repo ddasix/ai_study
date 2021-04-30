@@ -51,7 +51,7 @@ def admin_main():
             'level': session['session_level'],
             'avatar': session['session_img'],
         }
-        return render_template('/admin/screens/main/main.html', member = member)
+        return render_template('/admin/screens/main/main.html', member = member, variable=1234)
 
 @app.route('/admin/logout')
 def admin_logout():
