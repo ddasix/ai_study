@@ -2,7 +2,7 @@
 
 ## Create DB
 
-1. XAMPP를 이용 하여 mysql server 설치
+1. [XAMPP](https://www.apachefriends.org/index.html)를 이용 하여 mysql server 설치
 2. DB 생성
     ~~~sql
     CREATE DATABASE ai_study;
