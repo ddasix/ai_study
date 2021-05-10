@@ -1,0 +1,47 @@
+{% extends '/admin/layouts/base.html' %}
+
+{% block content %}
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <h4>[ {{news_item.category}} ] {{news_item.subject}}</h4>
+                </div>
+                <div class="form-group text-right">
+                    기사 작성일자 : {{news_item.created_at}}
+                </div>
+                {% if news_item.img1 %}
+                <div class="form-group text-center">
+                    <img src="/static/upload/news/{{news_item.img1}}" style="max-width:100%; height:auto;">
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    <h5>{{news_item.content | safe}}</h5>
+                </div>
+                <div class="form-group">
+                    {{news_item.name}} 기자
+                </div>
+                <div class="form-group text-center">
+                    {% if news_item.userid == session['session_id'] %}
+                        <a href="/admin/news/{{news_item.id}}/edit" class="btn btn-success">수정하기</a>
+                        <button type="button" class="btn btn-danger" onclick="delCheck({{news_item.id}})">삭제하기</button>
+                    {% endif %}
+                    <a href="/admin/news" class="btn btn-info">목록이동</a>
+                </div>
+            </div>
+        </div
+      </div>
+    </section>
+{% endblock content %}
+{% block jsblock %}
+    <script>
+        function delCheck(id) {
+            if (confirm('삭제하시겠습니까?')) {
+                location.href = `/admin/news/${id}/delete`;
+                return;
+            }
+        }
+    </script>
+{% endblock jsblock %}

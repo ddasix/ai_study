@@ -1,0 +1,59 @@
+{% extends '/admin/layouts/base.html' %}
+{% block styleblock %}
+<link
+  rel="stylesheet"
+  href="/static/vendor/summernote/summernote-bs4.css"
+/>
+{% endblock styleblock %}
+{% block content %}
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <form name="frm" action="/admin/news/edit" method="post" class="form-horizontal" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{news_item.id}}">
+            <div class="card-body">
+                <div class="form-group">
+                    <select name="category" class="form-control">
+                        <option value="정치" {% if news_item.category == "정치" %}selected{% endif %}>정치</option>
+                        <option value="경제" {% if news_item.category == "경제" %}selected{% endif %}>경제</option>
+                        <option value="정치" {% if news_item.category == "정치" %}selected{% endif %}>정치</option>
+                        <option value="생활/문화" {% if news_item.category == "생활/문화" %}selected{% endif %}>생활/문화</option>
+                        <option value="세계" {% if news_item.category == "세계" %}selected{% endif %}>세계</option>
+                        <option value="IT/과학" {% if news_item.category == "IT/과학" %}selected{% endif %}>IT/과학</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" name="subject" id="subject" value="{{news_item.subject}}" class="form-control" placeholder="기사 제목을 입력 하세요!">
+                </div>
+                <div class="form-group">
+                    <label>내용</label>
+                    <textarea name="content" id="content" class="textarea" placeholder="기사 내용을 입력 하세요!" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{news_item.content}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>사진 (Width Size : 1200px 권장)</label>
+                    {% if news_item.img2 %}
+                    <p><img src="/static/upload/news/{{news_item.img2}}" style="width:400px;"></p>
+                    {% endif %}
+                    <input type="file" name="img1" id="img1" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-success" onclick="return checkForm();">기사수정</button>
+                    <a href="/admin/news" class="btn btn-info">목록이동</a>
+                </div>
+            </div>
+            </form>
+        </div
+      </div>
+    </section>
+{% endblock content %}
+{% block jsblock %}
+<script src="/static/vendor/summernote/summernote-bs4.min.js"></script>
+<script>
+  // Summernote
+  $("textarea").summernote({
+      height: 240,
+  });
+</script>
+{% endblock jsblock %}

@@ -22,5 +22,10 @@ class Database():
         row= self.cursor.fetchall()
         return row
 
-    def commit():
+    def insert(self, query, args={}):
+        self.cursor.execute(query, args)
+        last_insert_id = self.cursor.lastrowid
+        return last_insert_id
+
+    def commit(self):
         self.db.commit()

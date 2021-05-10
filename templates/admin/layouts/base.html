@@ -39,7 +39,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         {% include '/admin/layouts/breadcrumb.html' %}
-        {% block content %} {% endblock %}
+        {% block content %}
+        {% endblock %}
       </div>
       <!-- /.content-wrapper -->
       <!-- Control Sidebar -->
@@ -53,6 +54,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
     <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/popper.min.js"></script>
+    
     <!-- Bootstrap 4 -->
     <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
